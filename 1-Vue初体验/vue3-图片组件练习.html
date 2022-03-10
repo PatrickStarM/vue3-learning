@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3-图片组件</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                list :[
+                    {
+                        title:"图片1",
+                        url:"https://t7.baidu.com/it/u=1819248061,230866778&fm=193&f=GIF",
+                    },
+                    {
+                        title:"图片2",
+                        url:"https://tse1-mm.cn.bing.net/th/id/OIP-C.nfC2tVNM9TgwQ5QuqECd6wHaFj?pid=ImgDet&rs=1",
+                    },
+                    {
+                        title:"图片3",
+                        url:"https://pic1.zhimg.com/v2-d58ce10bf4e01f5086c604a9cfed29f3_r.jpg?source=1940ef5c",
+                    },
+                ],
+            };
+        },
+            template: `
+                <div class="container">
+                    <img-card v-for="(item,index) of list"
+                    :title="item.title"
+                    :src="item.url"
+                    />             
+                </div>
+            `,
+        });
+
+        app.component("img-card", {
+            props: ["title","src"],
+            template: `
+                <div class="img-card">
+                    <h2>{{title}}</h2>
+                    <img :src="src">
+                </div>
+            `,
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+</html>
